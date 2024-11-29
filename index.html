@@ -1,90 +1,76 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevSam - Home</title>
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <!-- styles -->
-    <link rel="stylesheet" href="./styles.css" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dev Sam</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" lang="es" content="open source html and css template">
+<meta name="author" content="mlp design">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <nav>
-        <div class="nav-center">
-            <!-- nav header -->
-            <!-- <img src="./logo.svg" class = "logo" alt="logo" /> -->
-			<svg width="200" height="40" xmlns="http://www.w3.org/2000/svg" class = "logo" alt="logo">
-				<text x="10" y="28" font-family="Arial, sans-serif" font-size="28" fill="#828E82">Dev</text>
-				<text x="63" y="28" font-family="Arial, sans-serif" font-size="28" fill="#69D7C9">Sam</text>
-			</svg>
-            <button class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        
-        <!-- links -->
-        <ul class="links">
-            <li>
-                <a href="./index.html">home</a>
-            </li>
-            <li>
-                <a href="./about/personal.html">sobre mi</a>
-            </li>
-            <li>
-                <a href="./docs.html">documentación</a>
-            </li>
-            <li>
-                <a href="./contact.html">contacto</a>
-            </li>
-        </ul>
-        <!-- social media -->
-        <ul class="social-icons">
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-behance"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-sketch"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-    </nav>
-    <!-- JavaScript -->
-    <script src="./script.js"></script>
-	
-	 <header>
-    </header>
-    <main>
-        <section>
-            <h5>Introducción</h5>
-            <p>La finalidad de esta web es la de compartir mi formación en distintos lenguajes de programación que he ido adquiriendo.  
-			Se parte de la base que los lectores tienen conocimientos intermedios de Java, HTML, JavaScript, CSS, MySQL, Node JS, Linux, Windows, Virtualización.</p> 
-			<p>Comparto mis apuntes en Spring Framework, Spring Boot, Spring Security con JWT, React y más adelante otros temas como programación de IA con Java (tema complejo), Node JS.</p>
-			<p>Estos apuntes que comparto libremente son guías prácticas para refrescar y consultar en cualquier momento.  Tener en cuenta que estás tecnologías van cambiando y habrá métodos que varían, pero el público a quién me dirijo debe de tener los suficientes conocimientos para hacer las modificaciones necesarias para adaptar lo explicado al entorno actual (son tecnologías en pleno cambio y personalmente no tengo tiempo para revisar y modificar).</p>
-			<p>Muchas gracias por vuestra atención.</p>
-        </section>
-        
-    </main>
-    <footer>
-        <p>&copy; 2024 DevSam</p>
-    </footer>
+<!-- Menu Items -->
+<nav>
+ <input type="checkbox" id="show-menu" role="button">
+ <label for="show-menu" class="open"><span class="fa fa-bars"></span></label>
+ <label for="show-menu" class="close"><span class="fa fa-times"></label>
+ <ul id="menu">
+  <li><a class="active" href="./index.html">Home</a></li>
+  <li><a href="#">Spring Framework</a></li>
+  <li><a href="#">Spring Boot</a></li>
+  <li><a href="#">Spring Security JWT</a></li>
+  <li><a href="#">NodeJs</a></li>
+  <li><a href="#">ReactJs</a></li>
+  <li><a href="#">Angular</a></li>
+  <li><a href="#">Proyectos</a></li>
+  <li><a href="./about/personal.html">A cerca</a></li>
+  <li><a href="./contacto.html">Contacto</a></li>
+ </ul>
+</nav>
+<!-- // -->
+<!-- Banner -->
+<div id="banner">
+ <div id="header">
+  <h1>DevSam</h1>
+  <p class="sub">Apuntes, documentación en programación para Full Stack Web.</p>
+ </div>
+</div>
+<!-- // -->
+<div id="content">
+ <!-- Page Items -->
+ <div class="pageitem">
+  <h2>Introducción</h2>
+  <!--<p class="sub">Sed sed neque sed quam aliquet mattis.</p>-->
+  <p>La finalidad de esta web es la de compartir mi formación en distintos lenguajes de programación que he ido adquiriendo para la programación en Full Stack.</p> 
+  <p>Comparto mis apuntes en Spring (Core y Boot), NodeJs, ReactJs, Angular, Seguridad con JWT (bajo Spring Boot), proyectos y más adelante otros temas como programación de IA con Java (tema complejo), Node JS.</p>
+  <p>Estos apuntes que comparto libremente son guías prácticas para refrescar y consultar en cualquier momento.  Tener en cuenta que estás tecnologías van cambiando y habrá métodos que varían, pero el público a quién me dirijo debe de tener los suficientes conocimientos para hacer las modificaciones necesarias para adaptar lo explicado al entorno actual (son tecnologías en pleno cambio y personalmente no tengo tiempo para revisar y modificar).</p>
+  
+  <blockquote>Se parte de la base que los lectores tienen conocimientos en programación con Java, Spring, SQL, HTML, CSS, JavaScript además de un manejo fluido con Linux, Windows.
+   <p>También es importante tener una base en Git, GitHub y Virtualización con VMware (mi preferido para aquellos proyectos que se implemente con microservicios y tengamos que simular un proyecto real con distintos equipos).</p></blockquote>
+ </div>
+ 
+ <div class="pageitem">
+ <h2>Roadmap para Full Stack</h2>
+  <!--<p class="sub">Sed sed neque sed quam aliquet mattis.</p>-->
+  <p>En la programación en Full Stack se deberá de dominar la parte Backend y Frontend.  No importa el orden de su estudio, es indiferente.</p>  
+  <p>Para el Backend escogi Java (me recuerda al C que estudie en mi juventud) y como framework a Spring Core/Framework y Spring Boot (que facilita el desarrollo web). Posteriormente me forme en NodeJs junto con el framework Express.
+   Hay más lenguajes de programación, pero mis preferencias fueron estas para el Backend.</p>
+  <p>En la parte Frontend si o si se debe formarse en HTML, CSS, JavaScript y a continuación estudiar ReactJs (enfocado en las view, pero estable) y Angular (abarca muchas más capas, pero la pega es que ha experimentado bastante cambios).</p>
+  <br>
+  <p>No olvidarse la parte más importante, la realización de proyectos que ponga a prueba nuestros conocimientos en este mix de lenguajes, para mi es la parte más importante de la ruta de aprendizaje para un developer Full Stack Web.</p>
+ </div>
+ <div class="pageitem">
+ </div>
+ <!-- // -->
+</div>
+<!-- Footer Items -->
+<div id="footer">
+ <p>&copy; Sebastián Asunción Montero</p>
+ <!--Credits below must be kept under CC-NC 3.0 License-->
+ <p><a href="http://www.mlpdesign.net">HTML and CSS</a> by Devsam</p>
+</div>
+<!-- // -->
 </body>
 </html>

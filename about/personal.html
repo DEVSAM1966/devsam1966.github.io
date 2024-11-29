@@ -1,102 +1,67 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevSam - Acerca de</title>
-    <!-- font awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" />
-    <!-- styles -->
-    <link rel="stylesheet" href="../styles.css" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dev Sam - A cerca</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" lang="es" content="open source html and css template">
+<meta name="author" content="mlp design">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="../style.css">
 </head>
 <body>
-    <nav>
-        <div class="nav-center">
-            <!-- nav header -->
-            <!-- <img src="./logo.svg" class = "logo" alt="logo" /> -->
-			<svg width="200" height="40" xmlns="http://www.w3.org/2000/svg" class = "logo" alt="logo">
-				<text x="10" y="28" font-family="Arial, sans-serif" font-size="28" fill="#828E82">Dev</text>
-				<text x="63" y="28" font-family="Arial, sans-serif" font-size="28" fill="#69D7C9">Sam</text>
-			</svg>
-
-
-
-            <button class="nav-toggle">
-                <i class="fas fa-bars"></i>
-            </button>
-        
-        <!-- links -->
-        <ul class="links">
-            <li>
-                <a href="../index.html">home</a>
-            </li>
-            <li>
-                <a href="./about/personal.html">sobre mi</a>
-            </li>
-            <li>
-                <a href="../docs.html">documentación</a>
-            </li>
-            <li>
-                <a href="../contact.html">contacto</a>
-            </li>
-        </ul>
-        <!-- social media -->
-        <ul class="social-icons">
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-facebook"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-twitter"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-behance"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-linkedin"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.twitter.com">
-                <i class="fab fa-sketch"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-    </nav>
-    <!-- JavaScript -->
-    <script src="../script.js"></script>
-	
-	 <header>
-    </header>
-    <main>
-        <section>
-            <h5>Quién soy.</h5>
-            <p>Hola a todos, soy un informático ¡entrado en años y con canas!  Desde 1990 he trabajado en el sector de las IT y en mi formación académica:</p>
-			<p>Diplomatura en Informática de Gestión.</p>
-			<p>Certificación DBA Oracle.</p>
-			<p>Técnico superior en Óptica.</p>
-			<p>En el 2013 decidí realizar un cambio profesional radical, al calor de la gran crisis económica.  Fue una etapa muy bonita donde lo aprendido en informática, empresariales y óptica me permitió mantener mi propio negocio en el sector óptico con éxito (supuso muchas horas de trabajo, no poder descansar, arriesgar mi seguridad financiera).  No por ello deje la informática y junto a mi hermano iniciamos una start-up con el fin de ofrecer servicios contables online.  Un proyecto absorbente, con muchas horas de trabajo y poder hacer algo muy bonito tecnológicamente, por supuesto compaginándolo con mi negocio.</p>
-			<p>Para el 2021 decidí parar profesionalmente.  Me aburría y como loco enamorado de la informática me propuse reciclarme y autoformarme en la programación y porque no, meterme de lleno en temas de IA (es un proyecto que deseo hacer desde la universidad).  Así que empecé a formarme en:
-				Java y JavaScript.  
-				HTML 5.0 y CSS.
-				Node JS.
-				Git.
-				Spring Framework, Boot, Security.
-				Angular.
-				Inteligencia artificial bajo Java.</p>
-
-        </section>
-        
-    </main>
-    <footer>
-        <p>&copy; 2024 DevSam</p>
-    </footer>
+<!-- Menu Items -->
+<nav>
+ <input type="checkbox" id="show-menu" role="button">
+ <label for="show-menu" class="open"><span class="fa fa-bars"></span></label>
+ <label for="show-menu" class="close"><span class="fa fa-times"></label>
+ <ul id="menu">
+  <li><a class="active" href="../index.html">Home</a></li>
+  <li><a href="./personal.html">A cerca</a></li>
+  <li><a href="../contacto.html">Contacto</a></li>
+ </ul>
+</nav>
+<!-- // -->
+<!-- Banner -->
+<div id="banner">
+ <div id="header">
+  <h1>DevSam</h1>
+  <p class="sub">Apuntes, documentación en programación para Full Stack Web.</p>
+ </div>
+</div>
+<!-- // -->
+<div id="content">
+ <!-- Page Items -->
+ <div class="pageitem">
+  <h2>Quién soy</h2>
+  <!--<p class="sub">Sed sed neque sed quam aliquet mattis.</p>-->
+  <p>Hola a todos, soy un informático ¡entrado en años y con canas!  Desde 1990 he trabajado en el sector de las IT y en mi formación académica:</p>
+  <p>  Diplomatura en Informática de Gestión.</p>
+  <p>  Certificación DBA Oracle.</p>
+  <p>  Técnico superior en Óptica.</p>
+  <p>En el 2013 decidí realizar un cambio profesional radical, al calor de la gran crisis económica.  Fue una etapa muy bonita donde lo aprendido en informática, empresariales y óptica me permitió mantener mi propio negocio en el sector óptico con éxito (supuso muchas horas de trabajo, no poder descansar, arriesgar mi seguridad financiera).  No por ello deje la informática y junto a mi hermano iniciamos una start-up con el fin de ofrecer servicios contables online.  Un proyecto absorbente, con muchas horas de trabajo y poder hacer algo muy bonito tecnológicamente, por supuesto compaginándolo con mi negocio.</p>
+  <p>Para el 2021 decidí parar profesionalmente.  Me aburría y como loco enamorado de la informática me propuse reciclarme y autoformarme en la programación y porque no, meterme de lleno en temas de IA (es un proyecto que deseo hacer desde la universidad).  Así que empecé a formarme en:
+		Java y JavaScript.  
+		HTML 5.0 y CSS.
+		Node JS.
+		Git.
+		Spring Framework, Boot, Security.
+		Angular.
+		Inteligencia artificial bajo Java.</p>
+ </div>
+ <div class="pageitem">
+ </div>
+ <div class="pageitem">
+ </div>
+ <!-- // -->
+</div>
+<!-- Footer Items -->
+<div id="footer">
+ <p>&copy; Sebastián Asunción Montero</p>
+ <!--Credits below must be kept under CC-NC 3.0 License-->
+ <p><a href="http://www.mlpdesign.net">HTML and CSS</a> by Devsam</p>
+</div>
+<!-- // -->
 </body>
 </html>
