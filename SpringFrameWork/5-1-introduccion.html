@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dev Sam - Spring Framework</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" lang="es" content="open source html and css template">
+<meta name="author" content="mlp design">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+<!-- Menu Items -->
+<nav>
+ <input type="checkbox" id="show-menu" role="button">
+ <label for="show-menu" class="open"><span class="fa fa-bars"></span></label>
+ <label for="show-menu" class="close"><span class="fa fa-times"></label>
+ <ul id="menu">
+  <li><a class="active" href="../index.html">Home</a></li>
+  <li><a href="./5-1-introduccion.html">Spring - Introducción</a></li>
+  <li><a href="#">Spring - MVC</a></li>
+  <li><a href="#">Spring - Hibernate</a></li>
+  <li><a href="#">Spring - CRUD con MVC y Hibernate</a></li>
+  <li><a href="#">Spring - Maven</a></li>
+  <li><a href="#">Spring - CRUD con Maven, Seguridad</a></li>
+  <li><a href="#">Spring - Ejercicios</a></li>
+  <li><a href="#">Soluciones a los Ejercicios propuestos</a></li>
+  <li><a href="./about/personal.html">A cerca</a></li>
+  <li><a href="./contacto.html">Contacto</a></li>
+ </ul>
+</nav>
+<!-- // -->
+<!-- Banner -->
+<div id="banner">
+ <div id="header">
+  <h1>DevSam</h1>
+  <p class="sub">Temario en Spring Framework.</p>
+ </div>
+</div>
+<!-- // -->
+<div id="content">
+ <!-- Page Items -->
+ <div class="pageitem">
+  <h2>Introducción.</h2>
+  <p>Vamos abordar en estos manuales el curso que recibí en la CIFO de l’Hospitalet en el 2019 / 2020, impartido por Juan Pablo Fuentes.  Se basa en instalar manualmente la versión Spring que nos interese (en nuestro caso la última) sin emplear herramientas que facilite esta parte.  </p>
+  <p>La ventaja de trabajar de esta manera es la flexibilidad de elegir la versión de Spring, pero incrementa la complejidad de la gestión y depuración de errores (no son fáciles de interpretar el motivo).</p>
+  <p>También sirve a nivel educativo para aprender a conocer el trabajo que hacer por detrás herramientas como Maven en la gestión de la carga de librerías.</p>
+  </div>
+ 
+ <div class="pageitem">
+ <h2>Instalar tomcat.</h2>
+ 
+ <p>Lo descargamos de su web: </p>
+ <ul>
+	<li><a href="https://tomcat.apache.org/download-90.cgi">Tomcat versión 9.0</a></li>
+	<li><a href="https://tomcat.apache.org/download-10.cgi">Tomcat versión 10.0</a></li>
+ </ul>
+ <p>Eligimos la versión 10. <p>
+ <img src="./5-1-introduccion-images/image001.jpg"
+	alt="Captura de pantalla 1 - opciones de descarga."
+	width="400" height="300" />
+	
+ <p>Le damos a instalar, indicamos que arranque como servicio.</p>
+  <img src="./5-1-introduccion-images/image004.jpg"
+	alt="Captura de pantalla 2 - opciones de arranque como servicio."
+	width="400" height="300" />
+ 
+ <p>Dejamos los puertos por defecto si no chocan con alguna aplicación que tengamos instalada. Opcionalmente podemos poner un usuario y contraseña para administrar:</p>
+ <img src="./5-1-introduccion-images/image006.jpg"
+	alt="Captura de pantalla 4 - opciones de elección del puerto, usuario, contraseña."
+	width="400" height="300" />
+
+ <p>Ya lo tenemos funcionando (está instalado en mi caso en el path C:\Program Files\Apache Software Foundation\Tomcat 10.0).  <strong>Atención si instalamos Tomcat Administrator, deberemos de asignar a este apartado un puerto (por ejemplo 8085) en Eclipse.</strong></p>
+ <p>Lo tenemos que añadir al Eclipse el servidor de Tomcat (hay dos maneras de hacerlo, pero elijo esta).</p>
+ <img src="./5-1-introduccion-images/image009.jpg"
+	alt="Captura de pantalla 5 - opciones de elección del puerto 8005 en Eclipse."
+	width="400" height="300" />
+
+
+ <p>Ahora añadimos el servidor Apache.</p>
+ <img src="./5-1-introduccion-images/image011.jpg"
+	alt="Captura de pantalla 6 - Añadimos el servidor Apache I."
+	width="400" height="300" />
+
+ <p> </p>
+ <img src="./5-1-introduccion-images/image013.jpg"
+	alt="Captura de pantalla 7 - Añadimos el servidor Apache II."
+	width="400" height="300" />
+ 
+ <p>Ahora podemos arrancarlo con el botón start.  Si da error, revisar el puerto del administrador de tomcat en Eclipse (es un error habitual olvidarse).</p>
+ 
+ </div>
+ 
+ <div class="pageitem">
+ <h2>Instalar las librerias de Spring de forma manual.</h2>
+ <p>Para descargar las librerías de Spring en la versión que nos interese (en nuestro caso la última) vamos a:</p>
+ <ul>
+	<li><a href="https://repo.spring.io/release/org/springframework/spring/">Web repo.spring.io</a></li>
+	<li><a href="https://repo1.maven.org/maven2/org/springframework/">Web repo1.maven.org (opción actual)</a></li>
+ </ul>
+ <blockquote><p><strong>Actualmente a fecha 01/12/2024 el primer enlace deja de funcionar (esta web nos daba en un único sitio todos los ficheros jar que compone la versión de Spring que eligamos). <br><br>
+   Tendremos que ir al segundo link que apunta a Maven y aqui deberemos de elegir cada elemento (aop, aspects, beans, context, core, expression, instrument, jcl, jdbc, jms, messaging, orm, oxm, test, tx, web, webflux, webmvc, websocket) que conforma la versión de Spring elegida para trabajar. <br><br> 
+   En cada elemento se tendrá que descargar los ficheros jar que contenga *javadoc.jar, *sources.jar, *RELEASE.jar.  Se guardar en nuestro equipo en cualquier carpeta, por ejemplo en la carpeta libs.</strong></p></blockquote>
+ <p>Con fecha 17/10/2022 elijo la de la versión RELEASE la 5.2.22.RELEASE con fecha 11/05/2022. </p>
+ <br>
+ <p>Abrimos Eclipse, creamos un nuevo proyecto java: <strong>New -> Project -> Java Project</strong></p>
+ <img src="./5-1-introduccion-images/image017.jpg"
+	alt="Captura de pantalla 8 - Creamos un nuevo proyecto Java I."
+	width="400" height="300" />
+ 
+ <p>Pulsamos Next.</p>
+ <img src="./5-1-introduccion-images/image019.jpg"
+	alt="Captura de pantalla 9 - Creamos un nuevo proyecto Java II."
+	width="400" height="300" />
+ 
+ <p>Como Project Name se pone <strong>“spring-prueba”</strong>, los demás parámetros se dejan como están.  Pulsar el botón Finish.</p><br>
+ <p>Creamos una carpeta llamada “lib” desde el propio Eclipse.  <strong>New -> Folder</strong></p>
+ <img src="./5-1-introduccion-images/image021.jpg"
+	alt="Captura de pantalla 10 - New -> Folder."
+	width="400" height="340" />
+	
+ <p>En esta carpeta pegamos todos los ficheros *.jar que está en la carpeta libs y se creo al descargamos todos los ficheros *.jar del repositorio de Maven.</p>
+ <p>Con un <strong>copy & paste</strong> es suficiente:</p>
+ <img src="./5-1-introduccion-images/image023.jpg"
+	alt="Captura de pantalla 11 - Copy de los ficheros *.jar a Eclipse."
+	width="300" height="400" />
+
+ <p> </p><br>
+ <blockquote><p><strong>Ojo se añadió también el fichero commons-logging-1.2.jar (es importante).</strong></p></blockquote>
+ <br>
+ <p>Ahora se añade los ficheros .jar a las librerías del proyecto actual mediante:</p>
+ <p><strong>spring-prueba -> Properties -> Java Build Path -> Add JARs</strong></p>
+ <br>
+ <blockquote><p><strong>Ojo colocarlo en Classpath (Modulepath no – Me dio problemas).</strong></p></blockquote>
+ <p> </p><br>
+ <img src="./5-1-introduccion-images/image025.jpg"
+	alt="Captura de pantalla 12 - Añadimos los ficheros *.jar a las librerias del proyecto actual."
+	width="400" height="340" />
+ 
+ <p>Nos quedará así nuestro proyecto (aparecerá <strong>Referenced Libraries</strong>, que es donde están los ficheros .jar de Spring):</p>
+ <img src="./5-1-introduccion-images/image027.jpg"
+	alt="Captura de pantalla 13 - Apariencia final."
+	width="400" height="340" />
+ <br>
+ </div>
+ 
+ <div class="pageitem">
+ <h2>Configurar nuestro proyecto Spring (spring-prueba) y programar.</h2>
+ <p>Dentro de nuestro proyecto “spring-prueba” vamos a crear el archivo de configuración:  <strong>New -> File, se llamara applicationContext.xml</strong></p>
+ <img src="./5-1-introduccion-images/image029.jpg"
+	alt="Captura de pantalla 14 - Creación de un fichero en el proyecto Java."
+	width="400" height="340" />
+	
+ <p>Dentro de este fichero pondremos el siguiente código:</p>
+ <p><strong>applicationContext.xml</strong></p>
+ <table> 
+	<tbody>
+		<tr>
+			<?xml version="1.0" encoding="UTF-8"?>
+			<beans xmlns="http://www.springframework.org/schema/beans"
+			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+			xmlns:context="http://www.springframework.org/schema/context"
+			xsi:schemaLocation="http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans.xsd
+			http://www.springframework.org/schema/context
+			http://www.springframework.org/schema/context/spring-context.xsd">
+			<!-- Zona de definición de nuestros benas -->
+			</beans>
+		</tr>
+	</tbody>
+ </table>
+ 
+
+applicationContext.html
+ </div>
+ 
+</div>
+<!-- Footer Items -->
+<div id="footer">
+ <p>&copy; Sebastián Asunción Montero</p>
+ <!--Credits below must be kept under CC-NC 3.0 License-->
+ <p><a href="http://www.mlpdesign.net">HTML and CSS</a> by Devsam</p>
+</div>
+<!-- // -->
+</body>
+</html>

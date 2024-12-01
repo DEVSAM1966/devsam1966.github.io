@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recuadro con Scroll y Copiar Código</title>
+    <style>
+        .code-container {
+            border: 1px solid #ccc;
+            padding: 10px;
+            max-height: 300px;
+            overflow: auto;
+            font-family: monospace;
+            background-color: #f9f9f9;
+            position: relative;
+        }
+        .copy-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 5px 10px;
+            background-color: #28E5F6;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Recuadro con Scroll y Botón de Copiar Código</h2>
+    <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+<code>
+public class HolaMundo {
+    public static void main(String[] args) {
+        System.out.println("Hola, mundo!");
+    }
+}
+</code>
+        </pre>
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const codeContainer = document.querySelector('.code-container pre').innerText;
+            navigator.clipboard.writeText(codeContainer).then(() => {
+                alert('Código copiado al portapapeles');
+            }, (err) => {
+                alert('Error al copiar el código: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
