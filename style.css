@@ -174,7 +174,7 @@ ul#menu li a:hover, ul#menu li a.active {
 	display: none;
 }
 
-/* Responsive styles */
+/* Estilo Responsivo */
 @media screen and (max-width: 1000px) {
 	.three-col-cell {
 		width: calc((100% / 2) - 6px);
@@ -231,4 +231,25 @@ ul#menu li a:hover, ul#menu li a.active {
 	#footer {
 		text-align: center;
 	}
+}
+
+/* Recuadro para codigo */
+.code-container {
+    border: 1px solid #ccc;
+    padding: 10px;
+    max-height: 300px;
+    overflow: auto;
+    font-family: monospace;
+    background-color: #f9f9f9;
+    position: relative;
+}
+.copy-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #87b;
+    color: white;
+    border: none;
+    cursor: pointer;
 }

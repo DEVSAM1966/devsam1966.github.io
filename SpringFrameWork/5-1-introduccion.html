@@ -9,6 +9,7 @@
 <meta name="author" content="mlp design">
 <meta name="robots" content="index, follow">
 <link rel="stylesheet" href="../style.css">
+<script src="../script.js"></script>
 </head>
 <body>
 <!-- Menu Items -->
@@ -154,25 +155,24 @@
 	
  <p>Dentro de este fichero pondremos el siguiente código:</p>
  <p><strong>applicationContext.xml</strong></p>
- <table> 
-	<tbody>
-		<tr>
-			<?xml version="1.0" encoding="UTF-8"?>
-			<beans xmlns="http://www.springframework.org/schema/beans"
-			xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-			xmlns:context="http://www.springframework.org/schema/context"
-			xsi:schemaLocation="http://www.springframework.org/schema/beans
-			http://www.springframework.org/schema/beans/spring-beans.xsd
-			http://www.springframework.org/schema/context
-			http://www.springframework.org/schema/context/spring-context.xsd">
-			<!-- Zona de definición de nuestros benas -->
-			</beans>
-		</tr>
-	</tbody>
- </table>
- 
+ <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"&gt;
+&lt;!-- Zona de definición de nuestros benas --&gt;
+&lt;/beans&gt;
+</code>
+        </pre>
+ </div>
 
-applicationContext.html
  </div>
  
 </div>
