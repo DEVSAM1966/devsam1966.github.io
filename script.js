@@ -6,3 +6,7 @@ function copyToClipboard() {
                 alert('Error al copiar el código: ', err);
         });
 }
+
+function next(ruta) {
+	window.location.href = ruta;
+}

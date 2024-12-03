@@ -292,6 +292,150 @@ public class Main {
 	<li><p>Poner el fichero applicationContext.xml dentro de la carpeta <strong>src</strong>.  El programa espera encontrar el fichero en este sitio.</p></li>
  </ul>
  </div>
+
+ <div class="pageitem">
+  <h2>Añadamos más funcionalidad.</h2>
+  <p>No ha sido complicado y conocemos como funciona esta parte de Spring.  Vamos a complicarlo.
+     Creamos interfaces para poder crear diferentes clases: <strong>ISaludo.java</strong> mediante <strong>New -> Java interface</strong></p>
+  <img src="./5-1-introduccion-images/image043.jpg"
+	alt="Captura de pantalla 19 - Creación de la clase Java interface ISaludo."
+	width="400" height="340" /> 
+
+  <p>Añadimos este código en <strong>ISaludo.java</strong></p>
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+	<code>
+package com.trifulcas.springprueba;
+
+public interface ISaludo {
+	String hola();
+	
+	String adios();
+}
+	</code>
+        </pre>
+	</div>
+ 
+ <p>Modificamos la Class Java <strong>Saludos.java</strong></p>
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+	<code>
+package com.trifulcas.springprueba;
+
+public class Saludos implements ISaludo{
+	
+	public String hola() {
+		return "Hola que tal.";
+	}
+	public String adios() {
+		return "Adios que te vaya bien.";
+	}
+}
+	</code>
+        </pre>
+	</div>
+ 
+ <p>Creamos la Class Java llamada <strong>Vecino.java</strong> (recordar con <strong>New -> Class Java</strong>)</p>
+ <img src="./5-1-introduccion-images/image045.jpg"
+	alt="Captura de pantalla 20 - Creación de la clase Java interface Vecino."
+	width="400" height="340" /> 
+ 
+ <p><strong>Vecino.java</strong></p>
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+	<code>
+package com.trifulcas.springprueba;
+
+public class Vecino implements ISaludo{
+	@Override
+	public String hola() {
+		// TODO Auto-generated method stub
+		return "Holi vecinito";
+	}
+	
+	@Override
+	public String adios() {
+		// TODO Auto-generated method stub
+		return "Hasta luegi!!";
+	}
+}
+	</code>
+        </pre>
+	</div>
+ 
+ <p>Añadimos el siguiente código en <strong>applicationContext.xml</strong></p>
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+	<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"&gt;
+
+&lt;!-- Zona de definición de nuestros benas --&gt;
+&lt;bean id="miSaludo" class="com.trifulcas.springprueba.Saludos"&gt;&lt;/bean&gt;
+&lt;bean id="miVecino" class="com.trifulcas.springprueba.Vecino"&gt;&lt;/bean&gt;
+&lt;/beans&gt;
+	</code>
+        </pre>
+	</div>
+ 
+ <p>Modificamos el fichero <strong>Main.java</strong></p>
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+	<code>
+package com.trifulcas.springprueba;
+
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Cargar el contexto
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		// Pedir el bean
+		ISaludo miSaludo = context.getBean("miSaludo", Saludos.class);
+		
+		// Ejecutar el metodo
+		System.out.println(miSaludo.hola());
+		
+		// Pedir el bean
+		ISaludo miVecino = context.getBean("miVecino", Vecino.class);
+				
+		// Ejecutar el metodo
+		System.out.println(miVecino.hola());
+				
+		// Cerrar el contexto
+		context.close();
+
+	}
+}
+	</code>
+        </pre>
+	</div>
+	
+ <p>Ejecutamos el programa y el resultado es:</p>
+ <img src="./5-1-introduccion-images/image047.jpg"
+	alt="Captura de pantalla 21 - Resultado de la ejecución del programa."
+	width="610" height="180" /> 
+
+ <p> </p>
+ <center><button class="next-button" onclick="next('5-2-inyeccion-dependencias.html')">Siguiente</button></center>
+ 
+ </div>
  
 </div>
 <!-- Footer Items -->
