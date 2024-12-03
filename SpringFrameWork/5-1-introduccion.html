@@ -172,7 +172,125 @@
 </code>
         </pre>
  </div>
+ <p> </p>
+ <img src="./5-1-introduccion-images/image031.jpg"
+	alt="Captura de pantalla 15 - Muestra del código."
+	width="400" height="340" />
+	
+ <p><strong>Atención, hay que colocar el fichero applicationContext.xml dentro de la carpeta src, muy importante.</strong></p>
+ 
+ <p>Creamos en Eclipse el Package: <strong>com.trifulcas.springprueba</strong> con <strong>New -> Package</strong></p>
+ <img src="./5-1-introduccion-images/image033.jpg"
+	alt="Captura de pantalla 16 - Creación del package com.trifulcas.springprueba"
+	width="400" height="340" />
+	
+ <p>Dentro de este Package (com.trifulcas.springprueba), creamos una Class Java llamada <strong>Saludos.java</strong> mediante <strong>New -> Class Java</strong></p>
+ <img src="./5-1-introduccion-images/image035.jpg"
+	alt="Captura de pantalla 17 - Creación de la clase de Java Saludos.java"
+	width="300" height="300" />
 
+ <p>Ahora programaremos un par de métodos:</p>
+ <p><strong>Saludos.java</strong></p>
+ <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+ <code>
+package com.trifulcas.springprueba;
+
+public class Saludos {
+	
+	public String hola() {
+		return "Hola que tal.";
+	}
+	public String adios() {
+		return "Adios que te vaya bien.";
+	}
+
+}
+ </code>
+        </pre>
+ </div>
+ 
+ <p>Deberemos de realizar dos tareas:</p>
+ <ul>
+	<li>Indicar en nuestra configuración que tenemos un vean.</li>
+	<li>Crear un programa que llame al contexto de Spring.</li>
+</ul>
+
+<p>Configuración – <strong>applicationContext.xml</strong></p>
+<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+ <code>
+ &lt;?xml version="1.0" encoding="UTF-8"?&gt;
+ &lt;?beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"&gt;
+
+&lt;!-- Zona de definición de nuestros benas --&gt;
+&lt;bean id="miSaludo" class="com.trifulcas.springprueba.Saludos"></bean&gt;
+&lt;/beans&gt;
+
+ </code>
+        </pre>
+ </div>
+ 
+ <p>Crear programa que llama a Spring – <strong>Main.java</strong></p>
+ <p>Desde el Package com.trifulcas.springprueba – <strong>New -> Class Java</strong></p>
+ <p>Elegir que incluya “<strong>public static void main…</strong>”</p>
+ <img src="./5-1-introduccion-images/image038.jpg"
+	alt="Captura de pantalla 18 - Creación de la clase main en java"
+	width="400" height="340" />
+ 
+ <p><strong>Main.java</strong></p>
+ <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+ <code>
+ package com.trifulcas.springprueba;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		// Cargar el contexto
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		// Pedir el bean
+		Saludos miSaludo = context.getBean("miSaludo", Saludos.class);
+		
+		// Ejecutar el metodo
+		System.out.println(miSaludo.hola());
+		
+		// Cerrar el contexto
+		context.close();
+
+	}
+
+}
+ </code>
+        </pre>
+ </div>
+ 
+ <p>Al ejecutarlo el programa nos devuelve el saludo:</p>
+ <img src="./5-1-introduccion-images/image041.jpg"
+	alt="Captura de pantalla 18 - Creación de la clase main en java"
+	width="400" height="340" />
+ 
+ <p>Recordar estos puntos importantes para que no de problemas al ejecutar el programa:</p>
+ <ul>
+	<li><p>Insertar los ficheros .jar de Spring y Maven <strong>(commons-logging-1.2.jar)</strong> en <strong>Classpath, dentro de Java Build Path.</strong></p>
+	    <p>En Modulepath solo se incluye el jdk que estemos usando.</p></li>
+	<li><p>Commons-logging-1.2.jar no esta incluido en Spring, pero se debe incluir en el punto anterior.</p></li>
+	<li><p>Poner el fichero applicationContext.xml dentro de la carpeta <strong>src</strong>.  El programa espera encontrar el fichero en este sitio.</p></li>
+ </ul>
  </div>
  
 </div>
