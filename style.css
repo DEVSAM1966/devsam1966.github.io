@@ -259,6 +259,9 @@ ul#menu li a:hover, ul#menu li a.active {
 	white-space:pre-wrap;
 	word-wrap: break-word;
 }
+.code-container mark {
+	background-color: yellow;
+}
 .next-button {
     top: 10px;
     right: 10px;

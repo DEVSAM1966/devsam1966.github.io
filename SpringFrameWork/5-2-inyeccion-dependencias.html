@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>Dev Sam - Spring Framework</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="Description" lang="es" content="open source html and css template">
+<meta name="author" content="mlp design">
+<meta name="robots" content="index, follow">
+<link rel="stylesheet" href="../style.css">
+<script src="../script.js"></script>
+</head>
+<body>
+<!-- Menu Items -->
+<nav>
+ <input type="checkbox" id="show-menu" role="button">
+ <label for="show-menu" class="open"><span class="fa fa-bars"></span></label>
+ <label for="show-menu" class="close"><span class="fa fa-times"></label>
+ <ul id="menu">
+  <li><a class="active" href="../index.html">Home</a></li>
+  <li><a href="./5-2-inyeccion-dependencias.html">Spring Framework</a></li>
+  <li><a href="#">Spring - MVC</a></li>
+  <li><a href="#">Spring - Hibernate</a></li>
+  <li><a href="#">Spring - CRUD con MVC y Hibernate</a></li>
+  <li><a href="#">Spring - Maven</a></li>
+  <li><a href="#">Spring - CRUD con Maven, Seguridad</a></li>
+  <li><a href="#">Spring - Ejercicios</a></li>
+  <li><a href="#">Soluciones a los Ejercicios propuestos</a></li>
+  <li><a href="../about/personal.html">A cerca</a></li>
+  <li><a href="../contacto.html">Contacto</a></li>
+ </ul>
+</nav>
+<!-- // -->
+<!-- Banner -->
+<div id="banner">
+ <div id="header">
+  <h1>DevSam</h1>
+  <p class="sub">Temario en Spring Framework. Inyección dependencias.</p>
+ </div>
+</div>
+<!-- // -->
+<div id="content">
+ <!-- Page Items -->
+ <div class="pageitem">
+  <h2>Inyección dependencias</h2>
+      <p>Vamos a refactorizar el ejemplo anterior (visto en la Introducción) para que las clases <strong>Saludos</strong> y <strong>Vecino</strong> no implementen el interfaz <strong>ISaludo</strong>, sino que se lo inyectamos a la clase.  
+	     Se realizará los siguientes pasos para generar la inyección de dependencias:</p>
+	  <ul>
+		<li>1.	Generar el proyecto springinyeccion, tal como se explico con el proyecto springprueba visto en <strong>Introducción</strong>.</li>
+		<li>2.	Creamos las clases</li>
+		<li>3.	Inyectarlo desde la configuración de los beans.</li>
+	  </ul>  
+  </div>
+ 
+ <div class="pageitem">
+ <h2>Generar el proyecto - springinyección</h2>
+     <p>Seguimos los pasos descritos en el proyecto springprueba para generar el proyecto springinyección:</p>
+	 <ul>
+		<li>•	<strong>New -> Project -> Java Project</strong> (el nombre del proyecto es “springinyeccion”)</li>
+		<li>•	<strong>New -> Folder</strong> (el nombre de la carpeta es “lib”).</li>
+		<li>•	Copiar los <strong>ficheros .jar de Spring</strong> en la carpeta lib del proyecto springinyeccion.</li>
+		<li>•	Configurar <strong>Java Build Path -> Libraries -> Classpath</strong>.  Aquí pulsamos el botón “Add JARs” y buscamos todos los ficheros de la carpeta lib.</li>
+		<li>•	<strong>New -> Package</strong> (el nombre de “<strong>com.trifulcas.springprueba</strong>”, en la carpeta <strong>src</strong>).</li>
+		<li>•	<strong>New -> File</strong> (El nombre del fichero es “applicationContext.xml” en la carpeta <strong>src</strong>).</li>
+	 </ul>
+  </div>
+  
+ <div class="pageitem">
+ <h2>Crear clases</h2>
+	 <p>Creamos la interfase Java (<strong>New -> Interface</strong>):</p>
+	 <p><strong>ISaludo.java</strong></p>
+	 
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public interface ISaludo {
+	String hola();
+	
+	String adios();
+}
+			</code>
+        </pre>
+	</div>
+	
+	<p>Creamos las clases Java (<strong>New -> Class Java</strong>):</p>
+	<p><strong>Saludo.java</strong></p>
+	
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public class Saludos {
+	
+	private ISaludo _saludo;
+	public Saludos(ISaludo miSaludo) {
+		_saludo=miSaludo;
+	}
+	public String hola() {
+		return _saludo.hola();
+	}
+	public String adios() {
+		return _saludo.adios();
+	}
+}
+			</code>
+        </pre>
+	</div>
+	
+	<p><strong>Formal.java</strong></p>
+	
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public class Formal implements ISaludo{
+	@Override
+	public String hola() {
+		return "Buenos días";
+	}
+	
+	@Override
+	public String adios() {
+		return "Hasta la próxima";
+	}
+}
+			</code>
+        </pre>
+	</div>
+	
+	<p><strong>Informal.java</strong></p>
+	
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public class Informal implements ISaludo{
+	@Override
+	public String hola() {
+		return "¿Qué pasa en la casa coleguis?";
+	}
+	@Override
+	public String adios() {
+		return "Me las piro, vampiro";
+	}
+}
+			</code>
+        </pre>
+	</div>
+	
+	<p>Lo que hemos hecho es crear las nuevas clases, Formal e Informal, con las clases Saludo y Vecino inyectamos un elemento que incorpore ISaludo en el constructor.</p>
+	<p>Ahora viene lo nuevo.  Para indicar que Saludos usa Formal y Vecinos utiliza Informal lo podemos en la configuración de applicationContext.xml.</p>
+	
+	<p><strong>applicationContext.xml</strong></p>
+	
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"&gt;
+
+&lt;!-- Zona de definición de nuestros benas --&gt;
+&lt;bean id="saludoFormal" class="com.trifulcas.springprueba.Formal"&gt;&lt;/bean&gt;
+
+&lt;bean id="saludoInformal" class="com.trifulcas.springprueba.Informal"&gt;&lt;/bean&gt;
+
+&lt;bean id="miSaludo" class="com.trifulcas.springprueba.Saludos"&gt;
+&lt;constructor-arg ref="saludoFormal"&gt;&lt;/constructor-arg&gt;
+&lt;/bean&gt;
+
+&lt;bean id="miVecino" class="com.trifulcas.springprueba.Vecino"&gt;
+&lt;constructor-arg ref="saludoInformal"&gt;&lt;/constructor-arg&gt;
+&lt;/bean&gt;
+
+&lt;/beans&gt;
+			</code>
+        </pre>
+	</div>
+	
+	<p><strong>main.java</strong></p>
+	
+	<div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		// Cargar el contexto
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		// Pedir el bean
+		Saludos miSaludo = context.getBean("miSaludo", Saludos.class);
+		
+		// Ejecutar el metodo
+		System.out.println(miSaludo.hola());
+		
+		// Pedir el bean
+		Vecino miVecino = context.getBean("miVecino", Vecino.class);
+				
+		// Ejecutar el metodo
+		System.out.println(miVecino.hola());
+				
+		// Cerrar el contexto
+		context.close();
+	}
+
+}
+			</code>
+        </pre>
+	</div>
+	
+	<p>Al ejecutarlo <strong>miSaludo</strong> utiliza <strong>Formal</strong> y <strong>miVecino</strong> usa <strong>Informal</strong>.  ¿Qué se ha ganado?</p>
+	<p>Usar la inyección de dependencia y configurarlas desde el xml podemos indicar cual es el servicio que usa cada clase simplemente cambiando la configuración del XML.</p>
+	<p>Si tuviésemos que cambiar mi Vecino va a usar el saludo Formal sólo tenemos que cambiar una línea en la configuración y no tenemos que tocar ni una línea de código de nuestro programa.</p>
+	<img src="./5-2-inyeccion-images/image002.jpg"
+	alt="Captura de pantalla 1 - Pantalla de resultado al ejecutar main.java"
+	width="560" height="200" />
+	
+ </div>
+ 
+ 
+ <div class="pageitem">
+ <h2>Utilizar Setters y Getters</h2>
+     <p>Se ha visto anteriormente los enlaces a la inyección de dependencia, otra opción es usar setters (lo podemos usar en Spring).  Veamos cómo usarlos.</p>
+	 <p>Para ello copiaremos el proyecto <strong>springinyeccion</strong> a uno nuevo llamado <strong>springsetters</strong> para aprovechar el código anterior.</p>
+	 <br>
+	 <p>Desde Eclipse vamos a copiar el proyecto springinyeccion a un nuevo proyecto y cambiamos las clases:</p>
+
+	 <p><strong>Saludos.java</strong></p>
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public class Saludos {
+	
+	private ISaludo _saludo;
+	
+	public <mark>void setSaludo</mark>(ISaludo miSaludo) {
+		_saludo=miSaludo;
+	}
+	public String hola() {
+		return _saludo.hola();
+	}
+	public String adios() {
+		return _saludo.adios();
+	}
+}
+			</code>
+        </pre>
+	 </div>
+	 
+	 <p><strong>Vecino.java</strong></p>
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public class Vecino {
+	private ISaludo _saludo;
+	
+	public <mark>void setSaludo</mark>(ISaludo miSaludo) {
+		_saludo=miSaludo;
+	}
+	public String hola() {
+		return _saludo.hola();
+	}
+	
+	public String adios() {
+		return _saludo.adios();
+	}
+}
+			</code>
+        </pre>
+	 </div>
+	
+	<p>Modificamos el fichero <strong>applicationContext.xml</strong></p>
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"&gt;
+
+&lt;!-- Zona de definición de nuestros benas --&gt;
+&lt;bean id="saludoFormal" class="com.trifulcas.springprueba.Formal"&gt;&lt;/bean&gt;
+
+&lt;bean id="saludoInformal" class="com.trifulcas.springprueba.Informal"&gt;&lt;/bean&gt;
+
+&lt;bean id="miSaludo" class="com.trifulcas.springprueba.Saludos"&gt;
+<mark>&lt;!-- &lt;constructor-arg ref="saludoFormal"&gt;&lt;/constructor-arg&gt; --&gt;
+&lt;property name="saludo" ref="saludoFormal"&gt;&lt;/property&gt;</mark>
+&lt;/bean&gt;
+
+&lt;bean id="miVecino" class="com.trifulcas.springprueba.Vecino"&gt;
+<mark>&lt;!-- &lt;constructor-arg ref="saludoInformal"&gt;&lt;/constructor-arg&gt; --&gt;
+&lt;property name="saludo" ref="saludoInformal"&gt;&lt;/property&gt;</mark>
+&lt;/bean&gt;
+
+&lt;/beans&gt;
+			</code>
+        </pre>
+	 </div>
+	 
+	 <p>Al ejecutarlo veremos</p>
+	 <img src="./5-2-inyeccion-images/image004.jpg"
+	alt="Captura de pantalla 2 - Pantalla de resultado al ejecutar main.java incluido Getter y Setters."
+	width="600" height="200" />
+	
+	<p>Nos debemos de fijar que el <strong>setSaludo</strong> se transforma aquí en <strong>saludo</strong>.  El <strong>ref</strong> es igual que antes, hace referencia al vean que tenemos definido.</p>
+	<p>Basta con cambiar el constructor por el <strong>property</strong> y ya lo tenemos.<p>
+ 
+ </div>
+ 
+ <div class="pageitem">
+ <h2>Usar valores de un archivo de configuración</h2>
+	 <p>Si tenemos que inyectar valores fijos podemos hacerlo desde un archivo de configuración.  Copiaremos el proyecto <strong>springsetters</strong> al nuevo proyecto <strong>springarchivo</strong>.</p>
+	 <p>Desde el proyecto <strong>springarchivo</strong>, vamos a ejecutar las siguientes acciones:</p>
+	 <br>
+	 <p><strong>New -> File</strong>.  Su ubicación será en la carpeta <strong>src</strong>, el nombre del fichero <strong>prueba.propiedades</strong>.</p>
+	 <img src="./5-2-inyeccion-images/image006.jpg"
+	alt="Captura de pantalla 3 - Pantalla de creación del fichero de configuración prueba.propiedades."
+	width="400" height="340" />
+	
+	<br>
+	<p>En este archivo pondremos lo siguiente:</p>
+
+	<p><strong>prueba.propiedades</strong></p>
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+prueba.nombre=Ana Pi
+			</code>
+        </pre>
+	 </div>
+	 
+	 <br>
+	 <img src="./5-2-inyeccion-images/image008.jpg"
+		alt="Captura de pantalla 4 - Contenido del fichero de configuración prueba.propiedades ."
+		width="400" height="340" />
+	
+	<p>Modificamos<strong>Vecino.java</strong></p>
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+package com.trifulcas.springprueba;
+
+public class Vecino {
+	private ISaludo _saludo;
+	private String nombre;
+	
+	public String getNombre() {
+		return nombre;
+	}
+	
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	
+	public void setSaludo(ISaludo miSaludo) {
+		_saludo=miSaludo;
+	}
+	public String hola() {
+		return "Soy " + nombre + " " + _saludo.hola();
+	}
+	
+	public String adios() {
+		return _saludo.adios();
+	}
+}
+			</code>
+        </pre>
+	 </div>
+	 
+	 <p>Y también <strong>applicationContext.xml</strong></p>
+	 <div class="code-container" id="codeContainer">
+        <button class="copy-button" onclick="copyToClipboard()">Copiar</button>
+        <pre>
+			<code>
+<&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:context="http://www.springframework.org/schema/context"
+ xsi:schemaLocation="http://www.springframework.org/schema/beans
+ http://www.springframework.org/schema/beans/spring-beans.xsd
+ http://www.springframework.org/schema/context
+ http://www.springframework.org/schema/context/spring-context.xsd"&gt;
+
+&lt;!-- Carga de archivo de propiedades --&gt;
+&lt;context:property-placeholder location="classpath:prueba.propiedades"/&gt;
+
+&lt;!-- Zona de definición de nuestros benas -->
+&lt;bean id="saludoFormal" class="com.trifulcas.springprueba.Formal"&gt;&lt;/bean&gt;
+
+&lt;bean id="saludoInformal" class="com.trifulcas.springprueba.Informal"&gt;&lt;/bean&gt;
+
+&lt;bean id="miSaludo" class="com.trifulcas.springprueba.Saludos"&gt;
+&lt;property name="saludo" ref="saludoFormal"&gt;&lt;/property&gt;
+&lt;/bean>
+
+&lt;bean id="miVecino" class="com.trifulcas.springprueba.Vecino"&gt;
+&lt;property name="saludo" ref="saludoInformal"&gt;&lt;/property&gt;
+&lt;property name="nombre" value="${prueba.nombre}"&gt;&lt;/property&gt;
+&lt;/bean&gt;
+
+&lt;/beans&gt;
+
+			</code>
+        </pre>
+	 </div>
+	 
+	 <br>
+	 <p>El resultado al ejecutar la clase Main.java es:</p>
+	 <img src="./5-2-inyeccion-images/image010.jpg"
+		alt="Captura de pantalla 5 - Resultado de la ejecución con el fichero prueb.propiedades."
+		width="600" height="200" />
+
+	 <center>
+		<button class="next-button" onclick="next('5-1-introduccion.html')">1 - Introducción</button>
+		<button class="next-button" onclick="next('5-1-scope-beans-spring.html')">3 - Scope de beans</button>
+	</center>
+
+ </div>
+ 
+</div>
+<!-- Footer Items -->
+<div id="footer">
+ <p>&copy; Sebastián Asunción Montero</p>
+ <!--Credits below must be kept under CC-NC 3.0 License-->
+ <p><a href="http://www.mlpdesign.net">HTML and CSS</a> by Devsam</p>
+</div>
+<!-- // -->
+</body>
+</html>
